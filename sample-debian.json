@@ -1,0 +1,38 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Debian_64",
+      "iso_url": "debian93mini.iso",
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "dbc682eddefae1bf902948c12798085acf093f083d0e3b386e658d917dfcd52a",
+      "http_directory": ".",
+      "boot_command": [
+        "<esc><wait>",
+        "install <wait>",
+        "auto=true <wait>",
+        "priority=critical <wait>",
+        "url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-preseed.cfg <enter>"
+      ],
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_timeout": "60m",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": "true",
+      "scripts": [
+        "prepare.sh",
+        "guestadditions.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant"
+    }
+  ]
+}

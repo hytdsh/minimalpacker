@@ -1,0 +1,38 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "iso_url": "ubuntu1704mini.iso",
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "43ac1c9803294eff75c0d970da6a7d8b3c01bcd61e71e1a0c6eafb8c0e38cc2e",
+      "http_directory": ".",
+      "boot_command": [
+        "<esc><wait>",
+        "install <wait>",
+        "auto=true <wait>",
+        "priority=critical <wait>",
+        "url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-preseed.cfg <enter>"
+      ],
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_timeout": "60m",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": "true",
+      "scripts": [
+        "prepare.sh",
+        "guestadditions.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant"
+    }
+  ]
+}
