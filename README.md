@@ -3,11 +3,18 @@
 Minimal (as possible) procedure for [packer.io](https://www.packer.io) and [vagrantup.com](https://www.vagrantup.com) with [VirtualBox.org](https://www.virtualbox.org)
 
 便利さや柔軟さではなく、シンプルであること。  
-Not convenient, Not flexible, It's just simple.
+Not convenient, Not flexible, It's just that simple.
 
 ### usage example
 ```
-PS C:\> packer build sample-ubuntu.json
+PS $env:USERPROFILE\mini-pack> ls -name
+guestadditions-install.sh
+guestadditions-prepare.sh
+preseed-ubuntu.cfg
+sample-ubuntu.json
+ubuntu1704mini.iso
+
+PS $env:USERPROFILE\mini-pack> packer build ./sample-ubuntu.json
 ```
 インストール用の ISO ファイルとそのチェックサム文字列が必要となる。  
 You need some ISO file and ISO's checksum.
