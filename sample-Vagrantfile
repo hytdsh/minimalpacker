@@ -1,0 +1,8 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "sample-debian"
+
+  # config.ssh.password is needed for the first time only.
+  # config.ssh.* could be commented out after vagrant has replaced insecure key-pair with generated key-pair.
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
+end
