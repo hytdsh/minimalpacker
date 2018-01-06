@@ -21,14 +21,14 @@ http://jp.archive.ubuntu.com/ubuntu/dists/zesty/main/installer-amd64/current/ima
 
 ### requirements
 ```
-PS C:\> packer -v
+PS $env:USERPROFILE\mini-pack> packer -v
 1.1.3
 ```
 Windows 環境においては、もし可能であれば `packer.exe` を `vagrant.exe` と同じディレクトリに置くようにすると、パスを通す必要もなくファイアウォールの許可も一度で済む。  
 In Windows host, `packer.exe` could be placed in the folder where `vagrant.exe` is placed, if possible.
 
 ```
-PS C:\> vagrant -v
+PS $env:USERPROFILE\mini-pack> vagrant -v
 Vagrant 2.0.1
 ```
 
