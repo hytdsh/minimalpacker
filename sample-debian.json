@@ -12,7 +12,7 @@
         "install <wait>",
         "auto=true <wait>",
         "priority=critical <wait>",
-        "url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-preseed.cfg <enter>"
+        "url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed-debian.cfg <enter>"
       ],
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
@@ -25,8 +25,8 @@
       "type": "shell",
       "expect_disconnect": "true",
       "scripts": [
-        "prepare.sh",
-        "guestadditions.sh"
+        "guestadditions-prepare.sh",
+        "guestadditions-install.sh"
       ]
     }
   ],
