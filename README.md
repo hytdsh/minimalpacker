@@ -5,7 +5,7 @@ Minimal (as possible) procedure for [packer.io](https://www.packer.io) and [vagr
 便利さや柔軟さを目指すのではなく、シンプルであることを方針としています。  
 Not convenient, Not flexible, It's just that simple.
 
-#### What you get
+### What you get
 vagrantup.com に記述のある [デフォルトのユーザー設定](https://www.vagrantup.com/docs/boxes/base.html#default-user-settings) と [Guest Additions のインストール](https://www.vagrantup.com/docs/virtualbox/boxes.html#virtualbox-guest-additions) の要件のうち、以下のリストを満たした box が作成されます。  
 作成される box ファイルの大きさは、約 1GB です。  
 You'll get a box (packaged VM) that is granted with below.  
@@ -22,7 +22,7 @@ The box file size is 1GB roughly.
 - 仮想マシン内の `/vagrant` ディレクトリがホスト側と共有されているいること。  
   VM's `/vagrant` directory is shared with Host-side.
 
-#### What you do
+### What you do
 1. ISO ファイルをダウンロードしておき、そのチェックサム文字列を JSON ファイルに記述する。  
    Download ISO file. And write ISO's checksum to JSON.
 2. `packer build` を実行する。  
@@ -50,7 +50,7 @@ http://archive.ubuntu.com/ubuntu/dists/zesty/main/installer-amd64/current/images
 http://archive.ubuntu.com/ubuntu/dists/zesty/main/installer-amd64/current/images/SHA256SUMS
 ```
 
-#### Requirements
+### Requirements
 ```
 PS $env:USERPROFILE\mini-pack> packer -v
 1.1.3
@@ -75,7 +75,7 @@ PS C:\Program Files\Oracle\VirtualBox> .\vboxmanage -v
 実際の作業の上で生じた疑問点と、それに対する（回答というよりは）推測などを以下にまとめます。  
 Questions encounted in this article and My Guesses (rather than Answers) are as follows.
 
-#### LF or CR-LF
+### LF or CR-LF
 各ファイルの改行コードは LF でも CR-LF でも問題は無いようです。  
 Each file allows LF or CR-LF as "line break" character.
 
@@ -88,15 +88,12 @@ Each file allows LF or CR-LF as "line break" character.
 - `Vagrantfile` は ruby で実行される。  
   `Vagrantfile` is ruby script.
 
-#### kill-all-dhcp; netcfg
+### kill-all-dhcp; netcfg
 HTTP で preseed ファイルを渡す場合は `netcfg` で指定した項目が反映されません。([参照>Debian GNU/Linux インストールガイド B.4.2.](https://www.debian.org/releases/stable/amd64/apbs04.html))  
 `netcfg` parameters in a preseed file transferred with HTTP does not work.([Ref>Debian GNU/Linux Installation Guide B.4.2.](https://www.debian.org/releases/stable/amd64/apbs04.html))
 
-#### config.ssh.password
-
-For the first time only, `Vagrantfile` needs `config.ssh.password` parameter.
-
-本稿の手順では `packer` による仮想マシンの作成時に [insecure keypair](https://www.vagrantup.com/docs/boxes/base.html#quot-vagrant-quot-user) を配置していない。  
-そのため、初回のみ `Vagrantfile` で `config.ssh.password` を指定していないと起動に失敗する。  
+### config.ssh.password
+本稿の手順では `packer` による仮想マシンの作成時に [insecure keypair](https://www.vagrantup.com/docs/boxes/base.html#quot-vagrant-quot-user) を配置していません。  
+そのため、初回のみ `Vagrantfile` で `config.ssh.password` を指定していないと起動に失敗します。  
 In this article, [insecure keypair](https://www.vagrantup.com/docs/boxes/base.html#quot-vagrant-quot-user) is not placed into account `vagrant`'s .ssh/authorized_keys file.  
 Therefore, `Vagrantfile` needs `config.ssh.password` parameter, for the first startup only.
