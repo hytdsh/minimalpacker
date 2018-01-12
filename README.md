@@ -19,7 +19,7 @@ The box file size is 1GB roughly.
   Account "vagrant" can use sudo command without password.
 - Guest Additions がインストールされていること。  
   Guest Additions is installed.
-- 仮想マシン内の `/vagrant` ディレクトリがホスト側と共有されているいること。  
+- 仮想マシン内の `/vagrant` ディレクトリがホスト側と共有されていること。  
   VM's `/vagrant` directory is shared with Host-side.
 
 ### What you do
@@ -80,9 +80,9 @@ Questions encounted in this article and My Guesses (rather than Answers) are as 
 Each file allows LF or CR-LF as "line break" character.
 
 - JSON ファイルの改行は `packer` が扱う。  
-  `packer` cares line break in JSON file.
+  `packer` handles line break in JSON file.
 - preseed ファイルの改行は HTTP サービスが扱う。([参照>RFC7231](https://tools.ietf.org/html/rfc7231#section-3.1.1.3))  
-  HTTP cares line break in preseed file.([Ref>RFC7231](https://tools.ietf.org/html/rfc7231#section-3.1.1.3))
+  HTTP handles line break in preseed file.([Ref>RFC7231](https://tools.ietf.org/html/rfc7231#section-3.1.1.3))
 - `packer` の `"provisioners"` は、実行する `"scripts"` を一時ファイルとしてコピーしたものを使う。  
   `"provisioners"` of `packer` uses temporary copies of `"scripts"`.
 - `Vagrantfile` は ruby で実行される。  
