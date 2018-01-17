@@ -30,6 +30,7 @@ The box file size is 1GB roughly.
 
 ```
 PS $env:USERPROFILE\mini-pack> ls -name
+docker-install-ubuntu.sh
 guestadditions-install.sh
 guestadditions-prepare.sh
 preseed-ubuntu.cfg
