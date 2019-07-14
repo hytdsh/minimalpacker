@@ -1,8 +1,27 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "sample-debian"
+  # FILL-IN is the box name that 'vagrant box list' shows.
+  config.vm.box = "FILL-IN"
 
   # config.ssh.password is needed for the first time only.
-  # config.ssh.* could be commented out after vagrant has replaced insecure key-pair with generated key-pair.
+  # config.ssh.* could be commented out after once 'vagrant up'.
   config.ssh.username = "vagrant"
   config.ssh.password = "vagrant"
+
+  # FILL-IN is used as the name on VirtualBox and 'hostname' in VM.
+  add_vm(config, "FILL-IN")
+
+  # Add VM as you need.
+  #add_vm(config, "node01")
+  #add_vm(config, "node02")
+end
+
+def add_vm(cfg, vmname)
+  cfg.vm.define vmname do |node|
+    node.vm.provider "virtualbox" do |vbox|
+      vbox.name = vmname
+      vbox.customize ["modifyvm", vmname, "--nic2", "hostonly"]
+    end
+    node.vm.hostname = vmname
+  end
+  cfg.vm.provision "shell", path: "activate-nic2.sh"
 end
