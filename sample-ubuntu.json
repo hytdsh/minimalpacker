@@ -25,6 +25,7 @@
       "type": "shell",
       "expect_disconnect": "true",
       "scripts": [
+        "mute-beep.sh",
         "guestadditions-prepare.sh",
         "guestadditions-install.sh",
         "docker-install-ubuntu.sh"
